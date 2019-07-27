@@ -14,16 +14,17 @@ module.exports = {
         ]
     },
     devServer: {
-        contentBase: './public',
         port: 3001,
+        contentBase: './public',
         proxy: {
-            '/': {
+            '/':{
                 target: 'http://localhost:3000',
                 bypass: (req, res) => {
                     if (req.headers.accept.includes('html'))
                         return './index.html'
                 }
             }
+
         }
     },
     plugins: [new ErroOverlay()],

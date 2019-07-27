@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-    /**
+﻿/**
 *
 *	Name:			IRAN Sans-Serif Font
 *	Version:		4.0
@@ -75,14 +66,3 @@ This set of fonts are used in this project under the license: (.....)
 		 url('./fonts/woff/IRANSansWeb.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
 		 url('./fonts/ttf/IRANSansWeb.ttf') format('truetype');
 }
-
-    </style>
-    <title>Articles</title>
-</head>
-
-<body>
-    <div id="root"></div>
-    <script src="bundle.js"></script>
-</body>
-
-</html>

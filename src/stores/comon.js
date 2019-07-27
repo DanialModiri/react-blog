@@ -1,11 +1,17 @@
-import { observe, action } from 'mobx'
+import { observable, action } from 'mobx'
 
 
 class Comon {
-    @observe error = undefined;
+    @observable error = undefined;
+    @observable displaySidenav = false;
+    
+
+    @action setSidenavDisplay = (stat) => {
+        this.displaySidenav = stat;
+    }
 
     @action setError = (error) => {
-        
+        this.error = error;
     }
 }
 

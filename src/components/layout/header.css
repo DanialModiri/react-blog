@@ -1,0 +1,26 @@
+header {
+    background-color: #ececec;
+    display: flex;
+    direction: rtl;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+header .left {
+    flex-grow: 1;
+    line-height: 45px;
+    margin-right: 8px;
+}
+
+header .menu-btn {
+    border-radius: 50%;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    height: 45px;
+    width: 45px;
+
+}
+
+header .menu-btn span {
+    font-size: 20px;
+}
