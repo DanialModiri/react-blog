@@ -1,0 +1,16 @@
+
+
+.comment-header {
+    display: flex;
+    padding: 5px;
+}
+
+.comment-header img {
+    height: 50;
+    width: 50;
+}
+
+.comment {
+    border: 1px solid #adadad;
+    border-radius: 5px;
+}

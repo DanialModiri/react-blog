@@ -24,6 +24,14 @@ class Header extends React.Component {
             <div className="left">
                 مقاله ها
             </div>
+            <div className="search" >
+                <input placeholder="جستوجو" />
+                <Rippable>
+                    <div style={{ height: 25, width: 25, textAlign: 'center' }}>
+                        <i className="fa fa-search" />
+                    </div>
+                </Rippable>
+            </div>
             <Rippable onClick={() => {
                 this.setState({ displaySideNav: !this.state.displaySideNav });
             }} style={{ borderRadius: '50%' }}>
@@ -31,13 +39,17 @@ class Header extends React.Component {
                     <span className="fa fa-user"></span>
                 </button>
             </Rippable>
-            <Rippable onClick={() => {
-                this.setState({ displaySideNav: !this.state.displaySideNav });
-            }} style={{ borderRadius: '50%' }}>
-                <button className="menu-btn">
-                    <span className="fa fa-bars"></span>
-                </button>
-            </Rippable>
+            <div className="options">
+
+                <Rippable onClick={() => {
+                    this.setState({ displaySideNav: !this.state.displaySideNav });
+                }} style={{ borderRadius: '50%' }}>
+                    <button className="menu-btn">
+                        <span className="fa fa-bars"></span>
+                    </button>
+                </Rippable>
+            </div>
+
 
         </header>
     }

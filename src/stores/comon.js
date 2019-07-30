@@ -4,7 +4,7 @@ import { observable, action } from 'mobx'
 class Comon {
     @observable error = undefined;
     @observable displaySidenav = false;
-    
+    @observable loading = false;
 
     @action setSidenavDisplay = (stat) => {
         this.displaySidenav = stat;
@@ -12,6 +12,10 @@ class Comon {
 
     @action setError = (error) => {
         this.error = error;
+    }
+
+    @action setLoading = (stat) => {
+        this.loading = stat;
     }
 }
 

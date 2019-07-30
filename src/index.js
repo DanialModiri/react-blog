@@ -7,12 +7,14 @@ import Comon from './stores/comon'
 import Articles from './stores/articles'
 import Sidenav from './stores/sidenav'
 import App from './App';
+import SingleArticle from './stores/singlearticle';
 
 
 const stores = {
     Comon,
     Articles,
-    Sidenav
+    Sidenav,
+    SingleArticle
 }
 
 ReactDOM.render(<Provider {...stores}>

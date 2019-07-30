@@ -1,0 +1,47 @@
+.categories {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+
+
+.categories li .link  {
+    padding: 5px;
+    display: flex;
+}
+
+.categories li .link i {
+    transition: 0.2s ease-in;
+}
+
+.categories li a {
+    flex-grow: 1;
+}
+
+.sub-categories {
+    transition: .5s linear;
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.sub-categories li {
+    display: block;
+}
+
+
+sidebar {
+    padding: 8px;
+    margin: 8px;
+    width: 25%;
+    box-shadow: 0 1px 6px 0 rgba(0,0,0,.12), 0 1px 6px 0 rgba(0,0,0,.12);
+}
+
+@media screen and (max-width: 576px) {
+    sidebar {
+        display: none;
+    }
+}
+
+
