@@ -8,13 +8,15 @@ import Articles from './stores/articles'
 import Sidenav from './stores/sidenav'
 import App from './App';
 import SingleArticle from './stores/singlearticle';
+import User from './stores/user'
 
 
 const stores = {
     Comon,
     Articles,
     Sidenav,
-    SingleArticle
+    SingleArticle,
+    User
 }
 
 ReactDOM.render(<Provider {...stores}>

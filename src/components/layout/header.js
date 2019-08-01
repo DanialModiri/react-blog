@@ -2,15 +2,34 @@ import React from 'react';
 import './header.css'
 import { observer, inject } from 'mobx-react'
 import Rippable from 'react-ripples'
+import { withRouter, Link } from 'react-router-dom'
+import articles from '../../stores/articles';
 
-@inject('Comon') @observer
+
+const UserLogin = ({ user }) => {
+    if (user)
+        return <Rippable onClick={() => {
+            this.setState({ displaySideNav: !this.state.displaySideNav });
+        }} style={{ borderRadius: '50%' }}>
+            <button className="menu-btn">
+                <span className="fa fa-user"></span>
+            </button>
+        </Rippable>
+    else
+        return <div style={{ margin: 'auto 8px', display: 'block' }}>
+            <Link to="/login">ورود</Link>
+        </div>
+}
+
+@withRouter @inject('Comon') @inject('User') @observer
 class Header extends React.Component {
     constructor(props) {
         super(props);
     }
 
     state = {
-        displaySideNav: false
+        displaySideNav: false,
+        search: ''
     }
 
 
@@ -19,28 +38,25 @@ class Header extends React.Component {
     }
 
     render() {
+        console.log('HEADER', this.props)
         return <header>
 
             <div className="left">
                 مقاله ها
             </div>
             <div className="search" >
-                <input placeholder="جستوجو" />
-                <Rippable>
+                <input placeholder="جستوجو" onChange={(e) => this.setState({ search: e.target.value })} />
+                <Rippable onClick={() => {
+                    articles.getArticles({ search: this.state.search });
+                    this.props.history.push('/');
+                }}>
                     <div style={{ height: 25, width: 25, textAlign: 'center' }}>
                         <i className="fa fa-search" />
                     </div>
                 </Rippable>
             </div>
-            <Rippable onClick={() => {
-                this.setState({ displaySideNav: !this.state.displaySideNav });
-            }} style={{ borderRadius: '50%' }}>
-                <button className="menu-btn">
-                    <span className="fa fa-user"></span>
-                </button>
-            </Rippable>
+            <UserLogin />
             <div className="options">
-
                 <Rippable onClick={() => {
                     this.setState({ displaySideNav: !this.state.displaySideNav });
                 }} style={{ borderRadius: '50%' }}>

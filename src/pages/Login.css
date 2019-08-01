@@ -1,0 +1,38 @@
+.login-field {
+    border-radius: 16px;
+    padding: 8px;
+    border: 0;
+    border: 1px solid #dadada;
+    display: block;
+    margin-top: 8px;
+    outline: none;
+    width: 100%;
+    font-family: IRANSans;
+    box-sizing: border-box;
+    
+}
+
+.btn-login {
+    border-radius: 16px;
+    border: 0;
+    box-sizing: border-box;
+    font-family: IRANSans;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    margin-top: 16px;
+    padding: 0px 24px;
+    background-color: rgb(255, 136, 0);
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: rgb(255, 102, 0);
+}
+
+.card {
+    margin: 0 auto;
+    display: block;
+    margin-top: 8px;
+    padding: 16px;
+}

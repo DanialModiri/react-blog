@@ -22,3 +22,12 @@ a {
 a:hover {
     color: #4285f4;
 }
+
+.link {
+    text-decoration: none;
+    color: #767c8c;
+}
+
+.link:hover {
+    color: #4285f4;
+}

@@ -1,27 +1,35 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react'
 import './sidenav.css'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import Rippable from 'react-ripples'
+import Articles from '../../stores/articles'
 
-const Category = ({ item }) => {
+const Category = ({ item, push }) => {
     const [showChildren, setShowChildren] = React.useState(false);
-    let rotate = {    }
-    let height = { }
-    if (showChildren){
+    let rotate = {}
+    let height = {}
+    if (showChildren) {
         height = {
-            maxHeight: '450px' 
+            maxHeight: '450px'
         }
         rotate = {
             transform: 'rotate(90deg)'
         }
     }
 
+    const selectCategory = (item) => {
+        Articles.getArticles({ category: item });
+        push('/');
+    }
+
     return <React.Fragment>
         <div className="link">
-            <Link to={`/categories/${item._id}`}>
+            <span className="link" onClick={()=>{
+                selectCategory({ _id: item._id, title: item.title });
+            }}>
                 {item.title}
-            </Link>
+            </span>
             <Rippable onClick={() => {
                 setShowChildren(!showChildren);
             }}>
@@ -36,11 +44,11 @@ const Category = ({ item }) => {
             </Rippable>
 
         </div>
-        <ul className="sub-categories" style={{ ...height  }}>
+        <ul className="sub-categories" style={{ ...height }}>
             {(item.children || []).map(item => <li key={item._id}>
-                <Link>
+                <span className="link" onClick={() => selectCategory({ _id: item._id, title: item.title })}>
                     {item.title}
-                </Link>
+                </span>
 
             </li>)}
         </ul>
@@ -58,16 +66,15 @@ class Sidenav extends React.Component {
     }
 
     render() {
-
         return <sidebar>
             <h4>دسته بندی ها</h4>
             <ul className="categories">
                 {this.props.Sidenav.categories.map(item => <li key={item._id}>
-                    <Category item={item} />
+                    <Category push={this.props.history.push} item={item} />
                 </li>)}
             </ul>
         </sidebar>
     }
 }
 
-export default Sidenav;
+export default withRouter(Sidenav);

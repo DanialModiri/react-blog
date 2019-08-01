@@ -4,32 +4,34 @@ import fetchData from '../fetchData';
 class Article {
 
     @observable articles = []
-    @observable sort = 'date'
-    @observable page = 1
-    @observable size = null
+    @observable query = {
+        sort: 'date',
+        page: 1
+    }
+
+    @observable size = 0;
 
     @action getArticles = (options) => {
-        console.log('OPTIONS',(options || {}).page)
-        const { page, sort } = options || {};
-        if (page)
-            this.page = page;
-        if (sort)
-            this.sort = sort;
+        this.query = { ...this.query, ...options };
+        const query = {...this.query};
+        if (query.category)
+            query.category = query.category._id;
         fetchData('/articles', {
-            method: 'GET', params: {
-                sort: sort || this.sort,
-                page: page || this.page
-            }
+            method: 'GET', params: query
         }).then(res => {
             this.articles = res.articles;
-            this.size = res.size;
+            this.size = res.count;
         });
     }
 
-    @action clear = () => {
-        this.sort = 'date';
-        this.page = 1;
-        this.articles = [];
+    @action clearAll() {
+        this.query = {}
+        this.getArticles();
+    }
+
+    @action clear(key) {
+        this.query[key] = undefined;
+        this.getArticles();
     }
 }
 

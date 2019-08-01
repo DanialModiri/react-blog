@@ -8,9 +8,10 @@ class Loading extends React.Component {
     render() {
         const Comon = this.props.Comon;
         return <React.Fragment>
-            <div className="loading">
+            
+            {Comon.loading ? <div className="loading">
                 <div className="circle"></div>
-            </div>
+            </div> : this.props.children}
         </React.Fragment>
     }
 }

@@ -5,3 +5,12 @@
     display: flex;
     direction: rtl;
 }
+
+
+.error-alert {
+    padding: 16px;
+    margin-top: 16px;
+    border-radius: 16px;
+    background-color: rgba(163, 0, 0, 0.459);
+    opacity: 0.8;
+}
