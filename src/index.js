@@ -9,14 +9,15 @@ import Sidenav from './stores/sidenav'
 import App from './App';
 import SingleArticle from './stores/singlearticle';
 import User from './stores/user'
-
+import Profile from './stores/profile'
 
 const stores = {
     Comon,
     Articles,
     Sidenav,
     SingleArticle,
-    User
+    User,
+    Profile
 }
 
 ReactDOM.render(<Provider {...stores}>

@@ -6,12 +6,13 @@ import { withRouter, Link } from 'react-router-dom'
 import articles from '../../stores/articles';
 
 
-const UserLogin = ({ user }) => {
+const UserLogin = ({ user, push }) => {
     if (user)
         return <Rippable onClick={() => {
-            this.setState({ displaySideNav: !this.state.displaySideNav });
+            push('/profile');
         }} style={{ borderRadius: '50%' }}>
             <button className="menu-btn">
+                {user.username}
                 <span className="fa fa-user"></span>
             </button>
         </Rippable>
@@ -32,11 +33,6 @@ class Header extends React.Component {
         search: ''
     }
 
-
-    handleMenuClicks = () => {
-
-    }
-
     render() {
         console.log('HEADER', this.props)
         return <header>
@@ -55,7 +51,7 @@ class Header extends React.Component {
                     </div>
                 </Rippable>
             </div>
-            <UserLogin />
+            <UserLogin push={this.props.history.push} user={this.props.User.user} />
             <div className="options">
                 <Rippable onClick={() => {
                     this.setState({ displaySideNav: !this.state.displaySideNav });

@@ -1,0 +1,9 @@
+.spec span {
+    width: 100px;
+    overflow: hidden;
+    display: block;
+}
+
+.spec {
+    display: flex;
+}

@@ -17,6 +17,14 @@ class SingleArticle {
             this.comments = res;
         });
     }
+
+    @action addToMyFavorite = () => {
+        if(!this.selectedArticle)
+            return;
+        fetchData(`/user/addToFavs/${this.selectedArticle._id}`).then(res=>{
+            
+        })
+    }
 }
 
 export default new SingleArticle();

@@ -36,8 +36,6 @@ const SortCard = ({ sorts, onChange, currentSort }) => {
 
 const SearchCard = ({ search, category, clearSearch, clearCategory }) => {
 
-    console.log('CATEGORY', category)
-
     if (search || category)
         return <div className="articles-search">
             {search && <div>
@@ -58,7 +56,6 @@ const SearchCard = ({ search, category, clearSearch, clearCategory }) => {
 }
 
 const Article = ({ _id, title, body, image, views, date }) => {
-    console.log(date)
     date = new Date(date);
     return <div style={articleCardStyle}>
         <div style={{ flexGrow: 1, overflow: "hidden", width: '80%' }}>
@@ -113,9 +110,9 @@ class Articles extends React.Component {
 
         const { Articles } = this.props;
 
-        const ArticlesPage = parseInt(Articles.page);
+        const ArticlesPage = parseInt(Articles.query.page);
         const ArticlesSize = parseInt(Articles.size);
-
+        console.log('CURRENT PAGE', typeof ArticlesPage)
         console.log('Size', ArticlesSize)
 
         return <div className="articles">
@@ -136,16 +133,19 @@ class Articles extends React.Component {
                 {renderArticles(Articles.articles || [])}
             </Loading>
 
-            <Paginate 
+            <Paginate
                 onPageChange={({ selected }) => {
-                    Articles.getArticles({ page: selected + 1});
+                    Articles.getArticles({ page: selected + 1 });
                 }}
                 activeClassName={'page-active'}
                 containerClassName="pagination"
                 pageClassName='pagination-item'
                 pageCount={ArticlesSize / 10}
                 pageRangeDisplayed={4}
+                nextLabel=">"
+                previousLabel="<"
                 initialPage={ArticlesPage - 1}
+                forcePage={ArticlesPage - 1}
                 marginPagesDisplayed={4} />
         </div>
 

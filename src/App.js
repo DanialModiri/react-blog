@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import Layout from './components/layout';
 import { HashRouter, Switch, Route } from 'react-router-dom'
 import routes from './routes';
+import Cookies from 'react-cookies'
+import User from './stores/user'
 
 class App extends Component {
 
-    componentDidMount() {
 
+    componentWillMount(){
+        const token = Cookies.load('token');
+        if(token)
+            User.getProfile(token);
     }
 
     render() {
