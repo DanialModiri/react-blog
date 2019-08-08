@@ -1,0 +1,33 @@
+
+
+.filter-item {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    max-height: 120px;
+    overflow-y: auto;
+    transition: height .2s ease-in;
+}
+
+.filter-item .title {
+    display: flex;
+}
+
+.filter-item .title h4 {
+    display: block;
+}
+
+.filter-item .title i {
+    display: block;
+}
+
+.filter-item li {
+    padding: 2px;
+    display: flex;
+    width: 120px;
+}
+
+.filter-item li .label {
+    display: block;
+    flex-grow: 1;
+}

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import _ from 'lodash'
 import Loading from '../components/Loading';
 import Paginate from 'react-paginate'
+import FilterItem from '../components/FilterItem';
 
 const articleCardStyle = {
     boxShadow: '0 1px 6px 0 rgba(0,0,0,.12), 0 1px 6px 0 rgba(0,0,0,.12)',
@@ -128,6 +129,20 @@ class Articles extends React.Component {
             <SortCard currentSort={Articles.query.sort} onChange={(value) => {
                 Articles.getArticles({ sort: value, page: 1 });
             }} sorts={sorts} />
+            <div className="card">
+                <FilterItem onChange={(values) => {
+                    Articles.getArticles({ day: values });
+                }} title={'روز های هفته'} items={[
+                    { label: 'شنبه', value: 1 },
+                    { label: 'یکشنبه', value: 2 },
+                    { label: 'دوشنبه', value: 3 },
+                    { label: 'سه‌شنبه', value: 4 },
+                    { label: 'چهارشنبه', value: 5 },
+                    { label: 'پنجشنبه', value: 6 },
+                    { label: 'جمعه', value: 7 }
+                ]} />
+            </div>
+
 
             <Loading>
                 {renderArticles(Articles.articles || [])}

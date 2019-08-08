@@ -20,7 +20,7 @@
 }
 
 .sub-categories {
-    transition: .5s linear;
+    transition: .5s ease-in;
     display: block;
     max-height: 0;
     overflow: hidden;

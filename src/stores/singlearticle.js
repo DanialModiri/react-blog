@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx'
-import fetchData from '../fetchData';
-
+import fetchData, { post } from '../fetchData';
+import comon from './comon';
 
 class SingleArticle {
 
@@ -21,8 +21,8 @@ class SingleArticle {
     @action addToMyFavorite = () => {
         if(!this.selectedArticle)
             return;
-        fetchData(`/user/addToFavs/${this.selectedArticle._id}`).then(res=>{
-            
+        post(`/user/addToFavs/${this.selectedArticle._id}`).then(res => {
+            comon.setSuccess('با موفقیت اضافه شد');
         })
     }
 }

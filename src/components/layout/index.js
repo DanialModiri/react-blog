@@ -6,9 +6,17 @@ import Sidenav from './Sidenav';
 import { withRouter } from 'react-router-dom'
 
 const Error = ({ error }) => {
-    if(error)
+    if (error)
         return <div className="error-alert">
             {error}
+        </div>
+    return null;
+}
+
+const Success = ({ message }) => {
+    if (message)
+        return <div className="error-alert">
+            {message}
         </div>
     return null;
 }
@@ -16,9 +24,11 @@ const Error = ({ error }) => {
 @inject('Comon') @observer
 class Layout extends Component {
 
-    componentDidUpdate(prevProps){
-        if(prevProps.location.pathname !== this.props.location.pathname)
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.pathname !== this.props.location.pathname) {
+            this.props.Comon.setSuccess(undefined);
             this.props.Comon.setError(undefined);
+        }
     }
 
     render() {
@@ -27,9 +37,10 @@ class Layout extends Component {
                 <Header></Header>
 
                 <div className="container">
-                    
+
                     <Sidenav></Sidenav>
                     <div style={{ width: '80%' }}>
+                        <Success message={this.props.Comon.success} />
                         <Error error={this.props.Comon.error}></Error>
                         {this.props.children}
                     </div>

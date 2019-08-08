@@ -12,6 +12,8 @@ class App extends Component {
         const token = Cookies.load('token');
         if(token)
             User.getProfile(token);
+        else
+            User.logout();
     }
 
     render() {

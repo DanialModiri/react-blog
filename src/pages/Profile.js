@@ -1,16 +1,21 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react'
 import './Profile.css'
-import {Comment} from './Comment'
+import { Comment } from './Comment'
+import RedirectIfAuth from '../components/RedirectIfAuth';
 
 @inject('User') @inject('Profile') @observer
 class Profile extends React.Component {
-    render() {
 
+    logout = () => {
+        this.props.User && this.props.User.logout();
+    }
+
+    render() {
         const user = this.props.User.user || {};
         const Profile = this.props.Profile || {};
-        console.log(Profile)
-        return <React.Fragment>
+
+        return <RedirectIfAuth need={true}>
             <div className="card" >
                 <div style={{ display: 'flex' }}>
                     <img src={user.avatar}
@@ -37,16 +42,22 @@ class Profile extends React.Component {
                                 {user.city}
                             </div>
                         </div>
+
+
                     </div>
                 </div>
+                <div className="profile-footer">
+                    <button className="btn-close" onClick={this.logout}>
+                        خروج
+                    </button>
+                </div>
+
             </div>
             <div className="card">
                 <h4>نظرات</h4>
                 {(Profile.comments || []).map(item => <Comment {...item} />)}
             </div>
-        </React.Fragment>
-
-
+        </RedirectIfAuth>
     }
 }
 

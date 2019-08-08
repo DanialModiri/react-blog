@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react'
 import './Login.css'
+import RedirectIfAuth from '../components/RedirectIfAuth';
 
 @inject('User') @observer
 class Login extends React.Component {
@@ -21,21 +22,23 @@ class Login extends React.Component {
 
     render() {
 
-        return <div className="card">
-            <form onSubmit={this.login}>
-                <h4>ورود</h4>
-                <input className="login-field"
-                    onChange={this.handleInputChange}
-                    value={this.state.username} name="username"
-                    placeholder="نام کاربری" />
-                <input className="login-field" name="password"
-                    onChange={this.handleInputChange}
-                    value={this.state.password}
-                    placeholder="رمز عبور" />
-                <button className="btn-login">ورود</button>
-            </form>
+        return <RedirectIfAuth need={false}>
+            <div className="card">
+                <form onSubmit={this.login}>
+                    <h4>ورود</h4>
+                    <input className="login-field"
+                        onChange={this.handleInputChange}
+                        value={this.state.username} name="username"
+                        placeholder="نام کاربری" />
+                    <input className="login-field" name="password"
+                        onChange={this.handleInputChange}
+                        value={this.state.password}
+                        placeholder="رمز عبور" />
+                    <button className="btn-login">ورود</button>
+                </form>
 
-        </div>
+            </div>
+        </RedirectIfAuth>
     }
 
 }

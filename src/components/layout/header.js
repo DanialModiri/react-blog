@@ -38,7 +38,7 @@ class Header extends React.Component {
         return <header>
 
             <div className="left">
-                مقاله ها
+                <Link to="/">مقاله ها</Link>
             </div>
             <div className="search" >
                 <input placeholder="جستوجو" onChange={(e) => this.setState({ search: e.target.value })} />

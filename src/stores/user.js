@@ -2,6 +2,7 @@ import { observable, action } from 'mobx'
 import fetchData, { post } from '../fetchData';
 import Profile from './profile'
 import SingleArticle from './singlearticle'
+import Cookies from 'react-cookies'
 
 class User {
     @observable user = null;
@@ -46,6 +47,8 @@ class User {
         this.auth = false;
         this.user = null;
         this.token = null;
+        
+        Cookies.remove('token');
     }
 }
 

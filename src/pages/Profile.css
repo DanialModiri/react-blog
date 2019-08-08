@@ -7,3 +7,23 @@
 .spec {
     display: flex;
 }
+
+.profile-footer {
+    direction: ltr;
+}
+
+.btn-close {
+    padding: 4px;
+    border: 0;
+    font-family: IRANSans;
+    color: white;
+    background-color: rgb(255, 115, 0);
+    border-radius: 4px;
+    font-size: 17px;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-close:hover {
+    background-color: orange;
+}
